@@ -14,9 +14,9 @@
     <web-resource key="sequence-resources" name="sequence Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         
-        <resource type="download" name="sequence.css" location="/css/sequence.css"/>
-        <resource type="download" name="sequence.js" location="/js/sequence.js"/>
-        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
+        <resource type="download" name="sequence.js" location="/js/sequence.js" value="enabled"/>
+        <resource type="download" name="images/" location="/images" value="enabled"/>
 
         <context>sequence</context>
     </web-resource>

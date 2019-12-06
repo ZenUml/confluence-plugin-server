@@ -3,16 +3,42 @@ package com.zenuml.confluence.macro;
 import com.atlassian.confluence.content.render.xhtml.ConversionContext;
 import com.atlassian.confluence.macro.Macro;
 import com.atlassian.confluence.macro.MacroExecutionException;
+import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
+import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
+import com.atlassian.webresource.api.assembler.PageBuilderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
+@Scanned
 public class SequenceMacro implements Macro {
 
-    // The returned value is to be display at where the macro is inserted.
-    public String execute(Map<String, String> map, String s, ConversionContext conversionContext) throws MacroExecutionException {
-        return "<h1>New</h1>";
+    private PageBuilderService pageBuilderService;
+
+    @Autowired
+    public SequenceMacro(@ComponentImport PageBuilderService pageBuilderService) {
+        this.pageBuilderService = pageBuilderService;
     }
 
+
+    public String execute(Map<String, String> map, String s, ConversionContext conversionContext) throws MacroExecutionException {
+
+        pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:sequence-resources");
+
+        String output = "<div class =\"helloworld\">";
+        output = output + "<div class = \"" + map.get("Color") + "\">";
+
+
+        if (map.get("Name") != null) {
+            output = output + ("<h1>Hello " + map.get("Name") + "!</h1>");
+        } else {
+            output = output + "<h1>Hello World!<h1>";
+        }
+
+        output = output + "</div>" + "</div>";
+
+        return output;
+    }
     public BodyType getBodyType() { return BodyType.NONE; }
 
     public OutputType getOutputType() { return OutputType.BLOCK; }
