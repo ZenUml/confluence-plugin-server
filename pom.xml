@@ -92,6 +92,12 @@
                 <artifactId>confluence-maven-plugin</artifactId>
                 <version>${amps.version}</version>
                 <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>default-compress-resources</id>
+                        <phase/>
+                    </execution>
+                </executions>
                 <configuration>
                     <productVersion>${confluence.version}</productVersion>
                     <productDataVersion>${confluence.data.version}</productDataVersion>

@@ -25,19 +25,7 @@ public class SequenceMacro implements Macro {
 
         pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:sequence-resources");
 
-        String output = "<div class =\"helloworld\">";
-        output = output + "<div class = \"" + map.get("Color") + "\">";
-
-
-        if (map.get("Name") != null) {
-            output = output + ("<h1>Hello " + map.get("Name") + "!</h1>");
-        } else {
-            output = output + "<h1>Hello World!<h1>";
-        }
-
-        output = output + "</div>" + "</div>";
-
-        return output;
+        return "<sequence-diagram>A.method</sequence-diagram>";
     }
     public BodyType getBodyType() { return BodyType.NONE; }
 
