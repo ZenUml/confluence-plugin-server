@@ -28,7 +28,7 @@
         <resource type="download" name="images/" location="/images"/>
         <context>viewcontent</context>
     </web-resource>
-    <web-item key="banner-stats" name="Banner Stats" section="page.metadata.banner" weight="80">
+    <web-item key="banner-stats" name="Banner Stats" section="system.header/left" weight="80">
         <label key="banner.stats.label"/>
         <tooltip key="banner.stats.label"/>
         <link linkId="banner-stats" absolute="true"/>
