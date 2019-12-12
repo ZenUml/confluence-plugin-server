@@ -24,16 +24,6 @@
 
         <context>macro-browser</context>
     </web-resource>
-    <web-resource key="banner-stats-resources" name="banner-stats Web Resources">
-        <resource type="download" name="images/" location="/images"/>
-        <context>viewcontent</context>
-    </web-resource>
-    <web-item key="banner-stats" name="Banner Stats" section="system.header/left" weight="80">
-        <label key="banner.stats.label"/>
-        <tooltip key="banner.stats.label"/>
-        <link linkId="banner-stats" absolute="true"/>
-        <styleClass>aui-button aui-button-subtle</styleClass>
-    </web-item>
     <web-panel key="myPanel" location="atl.general">
         <resource name="view" type="velocity" location="templates/pie.vm"/>
     </web-panel>
