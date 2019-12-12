@@ -3,11 +3,11 @@ AJS.bind('init.rte', function () {
     // The dialog is defined in zenuml-editor-dialog.vm
     let dialog = AJS.dialog2("#zenuml-editor-dialog");
     AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
-      var currentParams = {};
-      currentParams["dsl"] = 'A.method(from, macro)';
+      var newParams = {};
+      newParams["dsl"] = 'A.method(from, macro)';
       var macro = {
         name: macroName,
-        params: currentParams,
+        params: newParams,
         defaultParameterValue: "",
         body : ""
       };
