@@ -4,6 +4,7 @@ AJS.bind('init.rte', function () {
     let dialog = AJS.dialog2("#zenuml-editor-dialog");
     AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
       var newParams = {};
+      // dsl = zenUmlStore;
       newParams["dsl"] = 'A.method(from, macro)';
       var macro = {
         name: macroName,
