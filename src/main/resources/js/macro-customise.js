@@ -1,49 +1,31 @@
 AJS.bind('init.rte', function () {
     let macroName = 'sequence';
-    // create an anchor at the end of the body, document.createElement()
-    let anchorDiv = document.createElement('div');
-    anchorDiv.setAttribute('id', 'zenUmlEditorDialog');
-    document.body.append(anchorDiv);
-    // mount the dialog on the anchor vm.$mount()
-    // let dialog = window.zenUmlEditorDialog();
-    let dialog = {
-        $mount: function () {
-
-        },
-        store: {
-            onSubmit: function () {
-
-            }
-        }
-    };
-    dialog.$mount("#zenUmlEditordialog");
-    // # a store name as an attribute <zenuml-editor store-name="zenUmlStore" />
-    // Just make it global for the moment
-    // submit: get new DSL from zenUmlStore and set macro new parameters
-    dialog.store.onSubmit = function (dsl) {
-        var currentParams = {};
-        currentParams["dsl"] = dsl;
-        var macro = {
-            name: macroName,
-            params: currentParams,
-            defaultParameterValue: "",
-            body : ""
-        };
-        tinymce.plugins.Autoconvert.convertMacroToDom(macro, function(data, textStatus, jqXHR ) {
-            AJS.$(selection).replaceWith(data + " <p>Replaced! something<br/>something else</p>");
-        }, function(jqXHR, textStatus, errorThrown ) {
-            AJS.log("error converting macro to DOM");
-        });
-    };
+    // The dialog is defined in zenuml-editor-dialog.vm
+    let dialog = AJS.dialog2("#zenuml-editor-dialog");
+    AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
+      var currentParams = {};
+      currentParams["dsl"] = 'A.method(from, macro)';
+      var macro = {
+        name: macroName,
+        params: currentParams,
+        defaultParameterValue: "",
+        body : ""
+      };
+      var selection = AJS.Rte.getEditor().selection.getNode();
+      tinymce.plugins.Autoconvert.convertMacroToDom(macro, function(data, textStatus, jqXHR ) {
+        AJS.$(selection).replaceWith(data + " <p>Replaced! something<br/>something else</p>");
+        dialog.hide();
+      }, function(jqXHR, textStatus, errorThrown ) {
+        AJS.log("error converting macro to DOM");
+      });
+    });
 
     // override opener: get old DSL from data-macro-parameters and set it to zenUmlStore
     AJS.MacroBrowser.setMacroJsOverride('sequence', {opener: function(macro) {
-        var selectedNode = AJS.Rte.getEditor().selection.getNode();
-        var oldParams = Confluence.MacroParameterSerializer.deserialize($(selectedNode).attr("data-macro-parameters"));
         console.log('macro', macro);
-        dialog.store.macor = macro;
+        // dialog.store.macor = macro;
         // open custom dialog
-        // dialog.show();
+        dialog.show();
     }});
 
 });

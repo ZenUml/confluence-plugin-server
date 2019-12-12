@@ -1,4 +1,4 @@
-<section id="demo-dialog" class="aui-dialog2 aui-dialog2-small aui-layer" role="dialog" aria-hidden="true">
+<section id="zenuml-editor-dialog" class="aui-dialog2 aui-dialog2-small aui-layer" role="dialog" aria-hidden="true">
     <header class="aui-dialog2-header">
         <h2 class="aui-dialog2-header-main">Edit your diagram</h2>
         <a class="aui-dialog2-header-close">
@@ -6,11 +6,12 @@
         </a>
     </header>
     <div class="aui-dialog2-content">
+        <zenuml-workspace>ZenUML workspace</zenuml-workspace>
         <sequence-diagram>A.method(pie)</sequence-diagram>
     </div>
     <footer class="aui-dialog2-footer">
         <div class="aui-dialog2-footer-actions">
-            <button id="dialog-submit-button" class="aui-button aui-button-primary">Submit</button>
+            <button id="zenuml-editor-dialog-submit-button" class="aui-button aui-button-primary">Submit</button>
         </div>
     </footer>
 </section>
