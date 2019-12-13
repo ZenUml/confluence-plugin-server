@@ -29,7 +29,7 @@
 
         <context>macro-browser</context>
     </web-resource>
-    <xhtml-macro name="sequence" class="com.zenuml.confluence.macro.SequenceMacro"
+    <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro"
                  icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png"
                  key='active-sequence-macro'>
         <description key="sequence.macro.desc"/>

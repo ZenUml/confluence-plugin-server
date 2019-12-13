@@ -1,7 +1,7 @@
 AJS.bind('init.rte', function () {
   // mount the editor
   VueModel.$mount('#app');
-  let macroName = 'sequence';
+  let macroName = 'active-sequence';
   // The dialog is defined in zenuml-editor-dialog.vm
   let dialog = AJS.dialog2("#zenuml-editor-dialog");
   AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
