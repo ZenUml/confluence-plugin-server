@@ -3,8 +3,8 @@
         <description>${project.description}</description>
         <version>${project.version}</version>
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
+        <param name="plugin-icon">images/zenuml_logo.png</param>
+        <param name="plugin-logo">images/zenuml_logo.png</param>
     </plugin-info>
 
     <!-- add our i18n resource -->
@@ -33,9 +33,7 @@
     <xhtml-macro name="sequence" class="com.zenuml.confluence.macro.SequenceMacro" key='sequence-macro'>
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>
-        <parameters>
-            <parameter name="Name" type="string" />
-        </parameters>
+        <parameters/>
     </xhtml-macro>
 
 </atlassian-plugin>
