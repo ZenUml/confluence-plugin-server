@@ -1,6 +1,5 @@
 package com.zenuml.confluence.macro;
 
-import com.atlassian.confluence.content.render.image.ImageDimensions;
 import com.atlassian.confluence.content.render.xhtml.ConversionContext;
 import com.atlassian.confluence.macro.*;
 import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;

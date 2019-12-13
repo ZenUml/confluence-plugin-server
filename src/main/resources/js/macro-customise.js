@@ -27,7 +27,7 @@ AJS.bind('init.rte', function () {
   AJS.MacroBrowser.setMacroJsOverride('sequence', {
     opener: function (macro) {
       console.log('macro', macro);
-      VueModel.$store.state.code = macro.params.dsl || 'A.method()';
+      VueModel.$store.state.code = (macro && macro.params && macro.params.dsl) || 'A.method()';
       // open custom dialog
       dialog.show();
     }
