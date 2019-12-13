@@ -7,7 +7,7 @@ AJS.bind('init.rte', function () {
   AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
     var newParams = {};
     // dsl = zenUmlStore;
-    newParams["dsl"] = VueModel.$store.state.code;
+    newParams["dsl"] = VueModel.$store.state.code || 'A.method()';
     var macro = {
       name: macroName,
       params: newParams,
@@ -27,7 +27,7 @@ AJS.bind('init.rte', function () {
   AJS.MacroBrowser.setMacroJsOverride('sequence', {
     opener: function (macro) {
       console.log('macro', macro);
-      VueModel.$store.state.code = macro.params.dsl;
+      VueModel.$store.state.code = macro.params.dsl || 'A.method()';
       // open custom dialog
       dialog.show();
     }
