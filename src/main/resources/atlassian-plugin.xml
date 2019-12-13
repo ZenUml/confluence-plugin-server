@@ -31,7 +31,7 @@
     </web-resource>
     <xhtml-macro name="sequence" class="com.zenuml.confluence.macro.SequenceMacro"
                  icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png"
-                 key='sequence-macro'>
+                 key='active-sequence-macro'>
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>
         <parameters/>
