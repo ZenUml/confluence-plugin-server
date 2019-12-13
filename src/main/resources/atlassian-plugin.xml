@@ -14,7 +14,7 @@
     </web-panel>
 
     <!-- add our web resources -->
-    <web-resource key="sequence-resources" name="sequence Web Resources">
+    <web-resource key="active-sequence-resources" name="sequence Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:dialog2</dependency>
         <dependency>confluence.editor.actions:editor-macro-browser</dependency>
@@ -30,7 +30,7 @@
         <context>macro-browser</context>
     </web-resource>
     <xhtml-macro name="sequence" class="com.zenuml.confluence.macro.SequenceMacro"
-                 icon="/download/resources/${atlassian.plugin.key}:sequence-resources/images/zenuml_logo.png"
+                 icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png"
                  key='sequence-macro'>
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>
