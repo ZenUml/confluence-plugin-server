@@ -24,7 +24,7 @@ AJS.bind('init.rte', function () {
   });
 
   // override opener: get old DSL from data-macro-parameters and set it to zenUmlStore
-  AJS.MacroBrowser.setMacroJsOverride('sequence', {
+  AJS.MacroBrowser.setMacroJsOverride(macroName, {
     opener: function (macro) {
       console.log('macro', macro);
       VueModel.$store.state.code = (macro && macro.params && macro.params.dsl) || 'A.method()';
