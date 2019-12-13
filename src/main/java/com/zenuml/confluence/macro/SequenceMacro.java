@@ -24,7 +24,8 @@ public class SequenceMacro implements Macro {
         pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
         return String.join("", "<sequence-diagram>", map.get("dsl"), "</sequence-diagram>");
     }
-    public BodyType getBodyType() { return BodyType.NONE; }
+    public BodyType getBodyType() { return BodyType.PLAIN_TEXT; }
 
     public OutputType getOutputType() { return OutputType.BLOCK; }
+
 }

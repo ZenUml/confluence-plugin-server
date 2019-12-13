@@ -34,7 +34,9 @@
                  key='active-sequence-macro'>
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>
-        <parameters/>
+        <parameters>
+            <parameter name="Desc" type="string" />
+        </parameters>
     </xhtml-macro>
 
 </atlassian-plugin>
