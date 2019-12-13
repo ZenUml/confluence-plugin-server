@@ -16,7 +16,7 @@ AJS.bind('init.rte', function () {
     };
     var selection = AJS.Rte.getEditor().selection.getNode();
     tinymce.plugins.Autoconvert.convertMacroToDom(macro, function (data, textStatus, jqXHR) {
-      AJS.$(selection).replaceWith(data + " <p>Replaced! something<br/>something else</p>");
+      AJS.$(selection).replaceWith(data);
       dialog.hide();
     }, function (jqXHR, textStatus, errorThrown) {
       AJS.log("error converting macro to DOM");
