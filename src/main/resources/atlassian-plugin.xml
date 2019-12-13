@@ -9,7 +9,10 @@
 
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="sequence"/>
-    
+    <web-panel key="zenuml-editor-dialog" location="atl.general">
+        <resource name="view" type="velocity" location="templates/zenuml-editor-dialog.vm"/>
+    </web-panel>
+
     <!-- add our web resources -->
     <web-resource key="sequence-resources" name="sequence Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
@@ -17,16 +20,13 @@
         <dependency>confluence.editor.actions:editor-macro-browser</dependency>
         <resource type="download" name="demo.html" location="/demo.html" value="enabled"/>
         <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
-        <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>
-        <resource type="download" name="sequence.js" location="/js/sequence.js" value="enabled"/>
+        <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>
+        <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>
         <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
         <resource type="download" name="images/" location="/images" value="enabled"/>
 
         <context>macro-browser</context>
     </web-resource>
-    <web-panel key="zenuml-editor-dialog" location="atl.general">
-        <resource name="view" type="velocity" location="templates/zenuml-editor-dialog.vm"/>
-    </web-panel>
     <xhtml-macro name="sequence" class="com.zenuml.confluence.macro.SequenceMacro" key='sequence-macro'>
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>

@@ -6,8 +6,7 @@
         </a>
     </header>
     <div class="aui-dialog2-content">
-        <zenuml-workspace>ZenUML workspace</zenuml-workspace>
-        <sequence-diagram>A.method(pie)</sequence-diagram>
+        <div id="app"></div>
     </div>
     <footer class="aui-dialog2-footer">
         <div class="aui-dialog2-footer-actions">
