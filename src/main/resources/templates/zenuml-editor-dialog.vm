@@ -1,4 +1,4 @@
-<section id="zenuml-editor-dialog" class="aui-dialog2 aui-dialog2-small aui-layer" role="dialog" aria-hidden="true">
+<section id="zenuml-editor-dialog" class="aui-dialog2 aui-dialog2-big aui-layer" role="dialog" aria-hidden="true">
     <header class="aui-dialog2-header">
         <h2 class="aui-dialog2-header-main">Edit your diagram</h2>
         <a class="aui-dialog2-header-close">
