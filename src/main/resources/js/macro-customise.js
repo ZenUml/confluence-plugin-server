@@ -7,16 +7,17 @@ AJS.bind('init.rte', function () {
   AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
     var newParams = {};
     // dsl = zenUmlStore;
-    newParams["dsl"] = VueModel.$store.state.code;
+    // newParams["dsl"] = VueModel.$store.state.code || 'A.method()';
+    newParams["Desc"] = 'Double-click to see preview';
     var macro = {
       name: macroName,
       params: newParams,
       defaultParameterValue: "",
-      body: ""
+      body: VueModel.$store.state.code
     };
     var selection = AJS.Rte.getEditor().selection.getNode();
     tinymce.plugins.Autoconvert.convertMacroToDom(macro, function (data, textStatus, jqXHR) {
-      AJS.$(selection).replaceWith(data + " <p>Replaced! something<br/>something else</p>");
+      AJS.$(selection).replaceWith(data);
       dialog.hide();
     }, function (jqXHR, textStatus, errorThrown) {
       AJS.log("error converting macro to DOM");
@@ -27,7 +28,7 @@ AJS.bind('init.rte', function () {
   AJS.MacroBrowser.setMacroJsOverride('sequence', {
     opener: function (macro) {
       console.log('macro', macro);
-      VueModel.$store.state.code = macro.params.dsl;
+      VueModel.$store.state.code = (macro && macro.body) || 'A.method()';
       // open custom dialog
       dialog.show();
     }

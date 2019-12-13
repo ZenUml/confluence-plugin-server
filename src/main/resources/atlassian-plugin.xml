@@ -31,7 +31,7 @@
         <description key="sequence.macro.desc"/>
         <category name="formatting"/>
         <parameters>
-            <parameter name="Name" type="string" />
+            <parameter name="Desc" type="string" />
         </parameters>
     </xhtml-macro>
 

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Map;
 
 @Scanned
-public class SequenceMacro implements Macro, EditorImagePlaceholder {
+public class SequenceMacro implements Macro {
 
     private PageBuilderService pageBuilderService;
 
@@ -27,13 +27,8 @@ public class SequenceMacro implements Macro, EditorImagePlaceholder {
 
         return "<sequence-diagram>A.method</sequence-diagram>";
     }
-    public BodyType getBodyType() { return BodyType.NONE; }
+    public BodyType getBodyType() { return BodyType.PLAIN_TEXT; }
 
     public OutputType getOutputType() { return OutputType.BLOCK; }
 
-    @Override
-    public ImagePlaceholder getImagePlaceholder(Map<String, String> map, ConversionContext conversionContext) {
-        return new DefaultImagePlaceholder("http://xpmac.local:1990/confluence/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_US/7901/NOCACHE/1.0.0-SNAPSHOT/_/download/resources/com.zenuml.confluence.sequence:sequence-resources/images/zenuml_logo.png",
-                false, new ImageDimensions(100, 100));
-    }
 }
