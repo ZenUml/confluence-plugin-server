@@ -22,7 +22,7 @@ public class SequenceMacro implements Macro {
 
     public String execute(Map<String, String> map, String s, ConversionContext conversionContext) throws MacroExecutionException {
         pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
-        return String.join("", "<sequence-diagram>", map.get("dsl"), "</sequence-diagram>");
+        return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
     }
     public BodyType getBodyType() { return BodyType.PLAIN_TEXT; }
 
