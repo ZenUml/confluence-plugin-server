@@ -1,42 +1,47 @@
-<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/zenuml_logo.png</param>
-        <param name="plugin-logo">images/zenuml_logo.png</param>
-    </plugin-info>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="sequence"/>
-    <web-panel key="zenuml-editor-dialog" location="atl.general">
-        <resource name="view" type="velocity" location="templates/zenuml-editor-dialog.vm"/>
-    </web-panel>
-
-    <!-- add our web resources -->
-    <web-resource key="active-sequence-resources" name="sequence Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <dependency>com.atlassian.auiplugin:dialog2</dependency>
-        <dependency>confluence.editor.actions:editor-macro-browser</dependency>
-        <resource type="download" name="demo.html" location="/demo.html" value="enabled"/>
-        <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
-        <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>
-        <resource type="download" name="sequence-diagram-wc.js" location="/js/sequence-diagram-wc.js" value="enabled"/>
-        <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>
-        <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>
-        <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
-        <resource type="download" name="images/" location="/images" value="enabled"/>
-
-        <context>macro-browser</context>
-    </web-resource>
-    <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro"
-                 icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png"
-                 key='active-sequence-macro'>
-        <description key="sequence.macro.desc"/>
-        <category name="formatting"/>
-        <parameters>
-            <parameter name="Desc" type="string" />
-        </parameters>
-    </xhtml-macro>
-
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/zenuml_logo.png</param>  
+    <param name="plugin-logo">images/zenuml_logo.png</param>  
+    <param name="atlassian-licensing-enabled">true</param>
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="sequence"/>  
+  <web-panel key="zenuml-editor-dialog" location="atl.general"> 
+    <resource name="view" type="velocity" location="templates/zenuml-editor-dialog.vm"/> 
+  </web-panel>  
+  <!-- add our web resources -->  
+  <web-resource key="active-sequence-resources" name="sequence Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <dependency>com.atlassian.auiplugin:dialog2</dependency>  
+    <dependency>confluence.editor.actions:editor-macro-browser</dependency>  
+    <resource type="download" name="demo.html" location="/demo.html" value="enabled"/>  
+    <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>  
+    <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>  
+    <resource type="download" name="sequence-diagram-wc.js" location="/js/sequence-diagram-wc.js" value="enabled"/>  
+    <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>  
+    <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>  
+    <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>  
+    <resource type="download" name="images/" location="/images" value="enabled"/>  
+    <context>macro-browser</context> 
+  </web-resource>  
+  <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro"> 
+    <description key="sequence.macro.desc"/>  
+    <category name="formatting"/>  
+    <parameters> 
+      <parameter name="Desc" type="string"/> 
+    </parameters> 
+  </xhtml-macro>  
+  <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet"> 
+    <description key="license-servlet.description">The License Servlet Plugin</description>  
+    <url-pattern>/com.zenuml.confluence.sequence/license</url-pattern> 
+  </servlet>
+  <servlet name="License Hello World Servlet" i18n-name-key="license-hello-world-servlet.name" key="license-hello-world-servlet" class="com.zenuml.confluence.servlet.LicenseHelloWorldServlet"> 
+    <description key="license-hello-world-servlet.description">The License Hello World Servlet Plugin</description>  
+    <url-pattern>/com.zenuml.confluence.sequence/licensehelloworld</url-pattern> 
+  </servlet>
 </atlassian-plugin>
