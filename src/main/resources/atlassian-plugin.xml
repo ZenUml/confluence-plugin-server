@@ -32,8 +32,11 @@
   <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
     <description key="sequence.macro.desc"/>  
     <category name="formatting"/>  
-    <parameters> 
-      <parameter name="Desc" type="string"/> 
+    <parameters>
+      <parameter name="Desc" type="string" default="Double click to see the preview">
+        <option key="showNameInPlaceholder" value="false" />
+        <option key="showValueInPlaceholder" value="true" />
+      </parameter>
     </parameters>
   </xhtml-macro>  
   <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet"> 
