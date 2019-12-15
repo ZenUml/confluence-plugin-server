@@ -1,5 +1,3 @@
-console.log('$$$$ vue.js');
-
 /*!
  * Vue.js v2.6.10
  * (c) 2014-2019 Evan You

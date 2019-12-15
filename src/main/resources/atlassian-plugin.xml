@@ -29,12 +29,12 @@
     <resource type="download" name="images/" location="/images" value="enabled"/>  
     <context>macro-browser</context> 
   </web-resource>  
-  <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro"> 
+  <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
     <description key="sequence.macro.desc"/>  
     <category name="formatting"/>  
     <parameters> 
       <parameter name="Desc" type="string"/> 
-    </parameters> 
+    </parameters>
   </xhtml-macro>  
   <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet"> 
     <description key="license-servlet.description">The License Servlet Plugin</description>  
