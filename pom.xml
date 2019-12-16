@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zenuml.confluence</groupId>
     <artifactId>sequence</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <organization>
         <name>P and D Vision</name>
         <url>https://www.zenuml.com/</url>
@@ -15,7 +15,8 @@
     <scm>
         <url>https://github.com/ZenUml/Confluence-Plugin-Server</url>
         <developerConnection>scm:git:git@github.com:ZenUml/Confluence-Plugin-Server.git</developerConnection>
-    </scm>
+      <tag>sequence-1.0.0</tag>
+  </scm>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -160,7 +161,7 @@
                 <executions>
                     <execution>
                         <id>default-compress-resources</id>
-                        <phase/>
+                        <phase />
                     </execution>
                 </executions>
                 <configuration>
