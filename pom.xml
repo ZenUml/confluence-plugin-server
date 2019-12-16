@@ -12,6 +12,10 @@
     <name>ZenUML Sequence Diagram</name>
     <description>This is the ZenUML Sequence Diagram plugin for Atlassian Confluence.</description>
     <packaging>atlassian-plugin</packaging>
+    <scm>
+        <url>https://github.com/ZenUml/Confluence-Plugin-Server</url>
+        <developerConnection>scm:git:git@github.com:ZenUml/Confluence-Plugin-Server.git</developerConnection>
+    </scm>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
