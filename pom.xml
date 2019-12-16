@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zenuml.confluence</groupId>
     <artifactId>sequence</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <organization>
         <name>P and D Vision</name>
         <url>https://www.zenuml.com/</url>
@@ -15,7 +15,7 @@
     <scm>
         <url>https://github.com/ZenUml/Confluence-Plugin-Server</url>
         <developerConnection>scm:git:git@github.com:ZenUml/Confluence-Plugin-Server.git</developerConnection>
-      <tag>sequence-1.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
     <dependencies>
         <dependency>
