@@ -1,22 +1,17 @@
 package com.zenuml.confluence.servlet;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
+import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
+import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
+import com.atlassian.upm.api.license.PluginLicenseManager;
+import com.atlassian.upm.license.storage.lib.ThirdPartyPluginLicenseStorageManager;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
-import com.atlassian.upm.api.license.PluginLicenseManager;
-
-
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * A license administration servlet that uses {@link ThirdPartyPluginLicenseStorageManager} to:
