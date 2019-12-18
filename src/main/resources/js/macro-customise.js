@@ -6,9 +6,9 @@ AJS.bind('init.rte', function () {
   let dialog = AJS.dialog2("#zenuml-editor-dialog");
   AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
     var newParams = {};
-    // dsl = zenUmlStore;
-    // newParams["dsl"] = VueModel.$store.state.code || 'A.method()';
+    // var dsl = VueModel.$store.state.code || 'A.method()';
     newParams["Desc"] = 'Double-click to see preview';
+    // newParams["DslHash"] = md5(dsl.replace(/\s/g, ''));
     var macro = {
       name: macroName,
       params: newParams,
@@ -35,3 +35,104 @@ AJS.bind('init.rte', function () {
   });
 
 });
+
+AJS.$(document).ready(function () {
+  var pageId = AJS.Meta.get("page-id");
+  var baseUrl = AJS.Confluence.getBaseUrl();
+  // Get all shadow elements from page
+  // return a dom node list
+  function getAllShadowElements() {
+    var elements = [];
+    AJS.$('sequence-diagram').each(function () {
+      if (this.shadowRoot.querySelector(".sequence-diagram-container")) {
+        elements.push(this.shadowRoot.querySelector(".sequence-diagram-container"))
+      }
+    });
+    return elements;
+  }
+  // Get all Macro nodes and its dsl
+  // return dsl text and convertToBlob promise
+  function getConvertPromiseAndDsl() {
+    var doms = getAllShadowElements();
+    var objects = [];
+    if (doms.length > 0) {
+      AJS.$.each(doms, function (index, dom) {
+        var dslEls = AJS.$(dom).find('.zenuml-dsl');
+        if (dslEls.length > 0) {
+          var dslText = dslEls.text();
+          objects.push({
+            dsl: dslText,
+            cpro: domtoimage.toBlob(dom, { bgcolor: 'white' })
+          })
+        }
+      })
+    }
+    return objects;
+  }
+  // Get all attachments based on page id 
+  // return a ajax promise
+  function getAttachments() {
+    return AJS.$.ajax({
+      url: baseUrl + '/rest/api/content/' + pageId + '/child/attachment?expand=version',
+      type: 'GET'
+    });
+  }
+  // Create and Upload a new attchment 
+  // return a ajax promise
+  function uploadAttachment(blob, dsl) {
+    var hash = md5(dsl);
+    var file = new File([blob], "zenuml-" + hash, { type: 'image/png' });
+    var fd = new FormData();
+    fd.append("file", file);
+    fd.append('comment', hash);
+    fd.append('minorEdit', "true");
+
+    return AJS.$.ajax({
+      url: baseUrl + '/rest/api/content/' + pageId + '/child/attachment',
+      type: 'POST',
+      beforeSend: function (request) {
+        request.setRequestHeader("X-Atlassian-Token", "nocheck");
+      },
+      processData: false,
+      contentType: false,
+      data: fd
+    });
+  }
+  // Validate a list of promise
+  // return Promise.all
+  function resolveAllPromises(promiseList) {
+    if (!Array.isArray(promiseList)) {
+      console.error("Wrong Promise Array");
+    }
+    return Promise.all(promiseList);
+  }
+
+  setTimeout(function () {
+    var dslPromiseList = getConvertPromiseAndDsl();
+    var promises = [];
+    var dsls = [];
+    if (dslPromiseList.length > 0) {
+      AJS.$.each(dslPromiseList, function (index, item) {
+        promises.push(item.cpro);
+        dsls.push(item.dsl);
+      });
+      resolveAllPromises(promises).then(function (blobArray) {
+        getAttachments().then(function (res) {
+          var existingAttachments = res.results;
+          AJS.$.each(blobArray, function (index, blob) {
+            var dslhash = md5(dsls[index]);
+            var found = existingAttachments.filter(function (attachment) {
+              return attachment.title === "zenuml-" + dslhash;
+            });
+            if (found.length === 0) {
+              uploadAttachment(blob, dsls[index]).then(function (res) {
+                console.log("New Attachment is uploaded successfully");
+              });
+            }
+          });
+        });
+      });
+    }
+  });
+
+})
