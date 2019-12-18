@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zenuml.confluence</groupId>
     <artifactId>sequence</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.4</version>
     <organization>
         <name>P and D Vision</name>
         <url>https://www.zenuml.com/</url>
@@ -174,13 +174,15 @@
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
                         <!-- Add package to export here -->
                         <Export-Package>com.zenuml.confluence.api,</Export-Package>
-                        <!-- Add package import here -->
-                        <Import-Package>org.springframework.osgi.*;resolution:="optional", org.eclipse.gemini.blueprint.*;resolution:="optional", *</Import-Package>
                         <!-- Ensure plugin is spring powered -->
                         <Spring-Context>*</Spring-Context>
-                        <Private-Package>com.atlassian.upm.license.storage.lib*</Private-Package>
-                        <DynamicImport-Package>com.atlassian.upm.api.license.entity;version="2.0.1", com.atlassian.upm.api.license;version="2.0.1", com.atlassian.upm.api.util;version="2.0.1", com.atlassian.upm.license.storage.plugin;version="${upm.license.compatibility.version}"</DynamicImport-Package>
                     </instructions>
+                    <pluginDependencies>
+                        <pluginDependency>
+                            <groupId>com.atlassian.upm</groupId>
+                            <artifactId>plugin-license-storage-plugin</artifactId>
+                        </pluginDependency>
+                    </pluginDependencies>
                     <bundledArtifacts>
                         <bundledArtifact>
                             <groupId>com.atlassian.upm</groupId>
