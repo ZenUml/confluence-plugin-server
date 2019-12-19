@@ -1,3 +1,4 @@
-services:
-  - docker
 if: branch = travis
+
+before_install:
+  - sudo apt-get install atlassian-plugin-sdk
