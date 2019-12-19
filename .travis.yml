@@ -1,4 +1,3 @@
-if: branch = travis
 language: java
 jdk: openjdk8
 
