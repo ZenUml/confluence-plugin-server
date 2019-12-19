@@ -1,4 +1,6 @@
 if: branch = travis
+language: java
+jdk: openjdk8
 
 before_install:
   - sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable contrib" >>/etc/apt/sources.list'
