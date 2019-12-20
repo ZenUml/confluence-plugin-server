@@ -34,7 +34,7 @@ public class SequenceMacro implements Macro {
         this.settingsManager = settingsManager;
     }
 
-    public String createMD5(String plaintext) {
+    private String createMD5(String plaintext) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(plaintext.getBytes());
@@ -42,19 +42,19 @@ public class SequenceMacro implements Macro {
             String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();
             return  myHash;
         } catch (NoSuchAlgorithmException e) {
-            return null;
+            throw new RuntimeException(e);
         }
     }
 
-    public String getPDFExportImgTag(String dsl, ConversionContext conversionContext) {
+    private String getPDFExportImgTag(String dsl, ConversionContext conversionContext) {
         String baseUrl = settingsManager.getGlobalSettings().getBaseUrl();
         String hash = createMD5(dsl);
         if(hash == null){
-            return null;
+            throw new RuntimeException("Error: Hash generation failure");
         }
         Attachment attachment = attachmentManager.getAttachment(conversionContext.getEntity(),"zenuml-"+hash);
         if(attachment==null) {
-            return null;
+            throw new RuntimeException("Error: Attachment is not found");
         }
         return String.join("", "<img src=\""+baseUrl+attachment.getDownloadPath()+"\"/>");
     }
@@ -65,9 +65,7 @@ public class SequenceMacro implements Macro {
         String outputType = conversionContext.getOutputType();
         if (outputType=="pdf") {
             String tag = getPDFExportImgTag(s, conversionContext);
-            if(tag != null){
-                return tag;
-            }
+            return tag;
         }
         return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
     }
