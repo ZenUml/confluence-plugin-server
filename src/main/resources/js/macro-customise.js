@@ -57,7 +57,7 @@ AJS.$(document).ready(function () {
     var objects = [];
     if (doms.length > 0) {
       var dslList = [];
-      AJS.$.each(doms, function (index, dom) {
+      doms.forEach(function (dom) {
         var dslEls = AJS.$(dom).find('.zenuml-dsl');
         if (dslEls.length > 0) {
           var dslText = dslEls.text();
@@ -109,14 +109,14 @@ AJS.$(document).ready(function () {
     var promises = [];
     var dsls = [];
     if (dslPromiseList.length > 0) {
-      AJS.$.each(dslPromiseList, function (index, item) {
+      dslPromiseList.forEach(function (item) {
         promises.push(item.domtoimagePromise);
         dsls.push(item.dsl);
       });
       Promise.all(promises).then(function (blobArray) {
         getAttachments().then(function (res) {
           var existingAttachments = res.results;
-          AJS.$.each(blobArray, function (index, blob) {
+          blobArray.forEach(function (blob, index) {
             var dslhash = md5(dsls[index]);
             var found = existingAttachments.filter(function (attachment) {
               return attachment.title === "zenuml-" + dslhash;
