@@ -56,14 +56,19 @@ AJS.$(document).ready(function () {
     var doms = getAllShadowElements();
     var objects = [];
     if (doms.length > 0) {
+      var dslList = [];
       AJS.$.each(doms, function (index, dom) {
         var dslEls = AJS.$(dom).find('.zenuml-dsl');
         if (dslEls.length > 0) {
           var dslText = dslEls.text();
-          objects.push({
-            dsl: dslText,
-            cpro: domtoimage.toBlob(dom, { bgcolor: 'white' })
-          })
+          // remove duplicate when upload mutiple same uml at the same time
+          if (dslList.indexOf(dslText) < 0) {
+            objects.push({
+              dsl: dslText,
+              cpro: domtoimage.toBlob(dom, { bgcolor: 'white' })
+            });
+            dslList.push(dslText);
+          }
         }
       })
     }
