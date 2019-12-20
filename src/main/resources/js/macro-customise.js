@@ -103,14 +103,6 @@ AJS.$(document).ready(function () {
       data: fd
     });
   }
-  // Validate a list of promise
-  // return Promise.all
-  function resolveAllPromises(promiseList) {
-    if (!Array.isArray(promiseList)) {
-      console.error("Wrong Promise Array");
-    }
-    return Promise.all(promiseList);
-  }
 
   setTimeout(function () {
     var dslPromiseList = getConvertPromiseAndDsl();
@@ -121,7 +113,7 @@ AJS.$(document).ready(function () {
         promises.push(item.domtoimagePromise);
         dsls.push(item.dsl);
       });
-      resolveAllPromises(promises).then(function (blobArray) {
+      Promise.all(promises).then(function (blobArray) {
         getAttachments().then(function (res) {
           var existingAttachments = res.results;
           AJS.$.each(blobArray, function (index, blob) {
