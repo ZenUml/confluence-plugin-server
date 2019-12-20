@@ -65,7 +65,7 @@ AJS.$(document).ready(function () {
           if (dslList.indexOf(dslText) < 0) {
             objects.push({
               dsl: dslText,
-              cpro: domtoimage.toBlob(dom, { bgcolor: 'white' })
+              domtoimagePromise: domtoimage.toBlob(dom, { bgcolor: 'white' })
             });
             dslList.push(dslText);
           }
@@ -118,7 +118,7 @@ AJS.$(document).ready(function () {
     var dsls = [];
     if (dslPromiseList.length > 0) {
       AJS.$.each(dslPromiseList, function (index, item) {
-        promises.push(item.cpro);
+        promises.push(item.domtoimagePromise);
         dsls.push(item.dsl);
       });
       resolveAllPromises(promises).then(function (blobArray) {
