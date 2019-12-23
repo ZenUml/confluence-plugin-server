@@ -11,6 +11,7 @@ import com.atlassian.webresource.api.assembler.PageBuilderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.DatatypeConverter;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -37,11 +38,11 @@ public class SequenceMacro implements Macro {
     private String createMD5(String plaintext) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(plaintext.getBytes());
+            md.update(plaintext.getBytes("UTF-8"));
             byte[] digest = md.digest();
             String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();
             return  myHash;
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }
@@ -49,9 +50,6 @@ public class SequenceMacro implements Macro {
     private String getPDFExportImgTag(String dsl, ConversionContext conversionContext) {
         String baseUrl = settingsManager.getGlobalSettings().getBaseUrl();
         String hash = createMD5(dsl);
-        if(hash == null){
-            throw new RuntimeException("Error: Hash generation failure");
-        }
         Attachment attachment = attachmentManager.getAttachment(conversionContext.getEntity(),"zenuml-"+hash);
         if(attachment==null) {
             throw new RuntimeException("Error: Attachment is not found");
@@ -59,15 +57,18 @@ public class SequenceMacro implements Macro {
         return String.join("", "<img src=\""+baseUrl+attachment.getDownloadPath()+"\"/>");
     }
 
-    public String execute(Map<String, String> map, String s, ConversionContext conversionContext)
-            throws MacroExecutionException, RuntimeException {
-        pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
-        String outputType = conversionContext.getOutputType();
-        if (outputType.equalsIgnoreCase("pdf")) {
-            String tag = getPDFExportImgTag(s, conversionContext);
-            return tag;
+    public String execute(Map<String, String> map, String s, ConversionContext conversionContext) {
+        try {
+            pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
+            String outputType = conversionContext.getOutputType();
+            if (outputType.equalsIgnoreCase("pdf")) {
+                String tag = getPDFExportImgTag(s, conversionContext);
+                return tag;
+            }
+            return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
+        } catch (RuntimeException e){
+            return "<div> We are not able to render the macro. Please contact the support at https://zenuml.atlassian.net/servicedesk </div>";
         }
-        return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
     }
 
     public BodyType getBodyType() { return BodyType.PLAIN_TEXT; }
