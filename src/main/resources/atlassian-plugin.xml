@@ -21,8 +21,8 @@
     <dependency>confluence.editor.actions:editor-macro-browser</dependency>  
     <resource type="download" name="demo.html" location="/demo.html" value="enabled"/>  
     <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/> 
-    <resource type="download" name="vue.js" location="/js/gtag.js" value="enabled"/>  
-    <resource type="download" name="vue.js" location="/js/google-analytics.js" value="enabled"/> 
+    <resource type="download" name="gtag.js" location="/js/gtag.js" value="enabled"/>  
+    <resource type="download" name="google-analytics.js" location="/js/google-analytics.js" value="enabled"/> 
     <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>  
     <resource type="download" name="sequence-diagram-wc.js" location="/js/sequence-diagram-wc.js" value="enabled"/>  
     <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>  
