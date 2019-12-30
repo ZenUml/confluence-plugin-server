@@ -16,5 +16,5 @@ Run `$ atlas-run` from the root folder
     
     or
     * `target/sequence-version-SNAPSHOT.obr`
-1. start local confluence-server
+1. start local confluence-server `docker-compose up confluence`
 1. navigate to market place > manage apps > upload app
