@@ -10,6 +10,10 @@ before_install:
   - sudo apt-get install atlassian-plugin-sdk
   - atlas-version
 
+stages:
+  - name: build and release
+    # require the branch name to be master (note for PRs this is the base branch name)
+    if: branch IN (master, cp-29-travis-release-to-github)
 jobs:
   include:
     - stage: test
