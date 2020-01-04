@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install atlassian-plugin-sdk
   - atlas-version
+install: skip
 
 stages:
   - name: build and release
@@ -17,10 +18,8 @@ stages:
 jobs:
   include:
     - stage: test
-      install: skip
       script: atlas-unit-test
     - stage: build and release
-      install: skip
       script:
         - atlas-package
         - ls -l ./target
