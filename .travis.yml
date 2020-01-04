@@ -11,6 +11,8 @@ before_install:
 install: skip
 script:
   - atlas-unit-test
+  - atlas-package
+  - ls -l ./target
 cache:
   directories:
     - $HOME/.m2
