@@ -13,8 +13,10 @@ before_install:
 jobs:
   include:
     - stage: test
+      install: skip
       script: atlas-unit-test
     - stage: build and release
+      install: skip
       script:
         - atlas-package
         - ls -l ./target
