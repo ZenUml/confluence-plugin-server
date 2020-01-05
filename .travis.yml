@@ -11,13 +11,13 @@ before_install:
 install: skip
 stages:
 - test
-- name: build and release
-  if: branch IN (master, cp-29-travis-release-to-github) or branch =~ ^release-
+- name: release
+  if: branch =~ ^release-
 jobs:
   include:
   - stage: test
     script: atlas-unit-test
-  - stage: build and release
+  - stage: release
     script:
     - atlas-package
     - ls -l ./target
@@ -36,11 +36,3 @@ jobs:
 cache:
   directories:
   - "$HOME/.m2"
-#deploy:
-#  provider: releases
-#  api_key:
-#    secure: hx7+CnHoM27xHI4Wy1Kqv/F5F10KIhgA7WaeyXB20f4Jc5IaCbs7j6wiRoE09mZQpjoHTjiLDtLo4NofRuOw3vdt7KuRGE1ul1EyyxUhJ9NL9GlxBQzdbX4ShdhuCJ6v5S8b2PovfU2xvKUqV2snag4RLLZZh2uH4cOqse5PH3qIwkfWWH7ah2mYMhmB82TgIU8PZa53r9Dz9fagkHTSdcPS02qQ15R0EZBZj2MPuHpuOeFnWsP6h8RRsB6r3peNiwUFxyQHr786njy/CTyHGLWToNoyGpFXQJq77NIYoJg0x4esuqEfe2kJMZyCln/4FaGpsI5HzaySF7VxQSFwbupBzus13lTGvunzAEcHDosRDBzXfBbbUV8oPLDidUEW2fK2sGerC7FzL4yzHOkrbnlg/Zac3fyNGMN+P050MoniPxPT3l45oyWm2xDE42YuESfP6s5q7X5JsLrArFVW2/ynC+N/FvhLVy0FRRoHLRPgB7mLZNFjnEbaH9rf7ubh50dZdWPxJFBk+hz4wnzBV50D88YnGLhJ/H6PDuQhE+zy1rg5YQxg6UzNJccLSbQRPC4cn0aBUbnzZvMNfG+VEW8+ppPD9/YWELql04l+niMvxoSQBDwBqJZjJUIPoO/bk2i0/ZTGolvVA5T9eontoDVmgFShVcbPmA9zsd4fUYk=
-#  file: "./target/*.jar"
-#  on:
-#    repo: ZenUml/Confluence-Plugin-Server
-#    branch: cp-29-travis-release-to-github
