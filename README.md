@@ -18,3 +18,9 @@ Run `$ atlas-run` from the root folder
     * `target/sequence-version-SNAPSHOT.obr`
 1. start local confluence-server `docker-compose up confluence`
 1. navigate to market place > manage apps > upload app
+
+# release
+1. create new tag on master branch: `git tag -a tag-name release-*** -m "message"` (name can be changed to fit release process). 
+1. push tag to remote. `git push origin tag-name`
+1. travis ci runs release job for the git tag.
+1. artifacts are released in github releases.
