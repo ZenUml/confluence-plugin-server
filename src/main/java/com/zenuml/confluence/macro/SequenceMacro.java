@@ -25,12 +25,10 @@ public class SequenceMacro implements Macro {
 
     public String execute(Map<String, String> map, String s, ConversionContext conversionContext) throws MacroExecutionException {
         pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
-        String license = "";
-        if (!pluginLicenseManager.getLicense().isDefined()) {
-            license = "No license presented";
-        }
-        return String.join("", "<sequence-diagram>", s, "</sequence-diagram>", license);
+        String licenseInfo = pluginLicenseManager.getLicense().isDefined() ? "" : "No license presented";
+        return String.join("", "<sequence-diagram>", s, "</sequence-diagram>", licenseInfo);
     }
+
     public BodyType getBodyType() { return BodyType.PLAIN_TEXT; }
 
     public OutputType getOutputType() { return OutputType.BLOCK; }
