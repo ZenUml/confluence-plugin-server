@@ -15,7 +15,7 @@ stages:
   - test
   - name: build and release
     # require the branch name to be master (note for PRs this is the base branch name)
-    if: branch IN (master, cp-29-travis-release-to-github)
+    if: branch IN (master, cp-29-travis-release-to-github) or branch =~ ^release-
 jobs:
   include:
     - stage: test
@@ -35,7 +35,7 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
-#          condition: $TRAVIS_TAG =~ ^sequence-
+          condition: $TRAVIS_TAG =~ ^release-
 cache:
   directories:
     - $HOME/.m2
