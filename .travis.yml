@@ -1,41 +1,46 @@
 language: java
 jdk: openjdk8
-
-
 before_install:
-  - sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable contrib" >>/etc/apt/sources.list'
-  - wget https://packages.atlassian.com/api/gpg/key/public
-  - sudo apt-key add public
-  - sudo apt-get update
-  - sudo apt-get install atlassian-plugin-sdk
-  - atlas-version
+- sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable
+  contrib" >>/etc/apt/sources.list'
+- wget https://packages.atlassian.com/api/gpg/key/public
+- sudo apt-key add public
+- sudo apt-get update
+- sudo apt-get install atlassian-plugin-sdk
+- atlas-version
 install: skip
-
 stages:
-  - test
-  - name: build and release
-    # require the branch name to be master (note for PRs this is the base branch name)
-    if: branch IN (master, cp-29-travis-release-to-github) or branch =~ ^release-
+- test
+- name: build and release
+  if: branch IN (master, cp-29-travis-release-to-github) or branch =~ ^release-
 jobs:
   include:
-    - stage: test
-      script: atlas-unit-test
-    - stage: build and release
-      script:
-        - atlas-package
-        - ls -l ./target
-      deploy:
-        provider: releases
-        api_key:
-          secure: P1zTdiHmM7CJS5HBgB6VDlvo9iALxF/oDTp4y9gu2dWJK7j5dqWuJbfnqYllf4W3uJu8kw20qXVJeaGIt0+11XEK6loQQX20MvMTvHET5CRyg5ZiMDyvUSF+EGPHj4k/Vj8oBRQxuNe5KkT/P0dKuvETQA9ZCMMLMLyxPp49fNK8X51txcArowjFfASo1QbSMN0VGOwiSEHH8GHhz0752p76GdFdpvfoAuGyXcfcFIrQn0/+Uu5vw0qSob6bk72Xy7rWxlvi1VhuvjL8rMm+R7aGZ9SJ+BBQS1V7cymYWDqSsBukxV6uYnQZ9LfRz3r0uht7W9GQ8mPyt3CWxZSA3306lRl1Y52gWa244T81ETIyvOkDMpxGD3memRqnSs7/b1gcy7VRmvg7IQCzV53cKlWaq6qWHZ/N7KSQ65BqlOJVm4sfGSNvQRt2vB5/MkKXgapS+OeyJfn0pZWOU9gkR+7iolTKANCSRq/Dqt/0PBYd2yRZxmqXWb5i6Zh/uGOcFM0+TS36Qn+EvNsMxl+n0s+IbPAGVjvTg3vBnutlYSo4G4i+ue3M4DCQv2oUNDr+js3N33Cm2gemz+2GSLTghq6QEYDnfKfWM3LdvV7K9o0T7FWWv4kMuny1JHww+2L5Noh8daCQa3Xtdmh5kt8HoWnIapWTyPtrE50WEkW3goU=
-        file_glob: true
-        file:
-          - ./target/*.obr
-          - ./target/*.jar
-        skip_cleanup: true
-        on:
-          tags: true
-          condition: $TRAVIS_TAG =~ ^release-
+  - stage: test
+    script: atlas-unit-test
+  - stage: build and release
+    script:
+    - atlas-package
+    - ls -l ./target
+    deploy:
+      provider: releases
+      api_key:
+        secure: hx7+CnHoM27xHI4Wy1Kqv/F5F10KIhgA7WaeyXB20f4Jc5IaCbs7j6wiRoE09mZQpjoHTjiLDtLo4NofRuOw3vdt7KuRGE1ul1EyyxUhJ9NL9GlxBQzdbX4ShdhuCJ6v5S8b2PovfU2xvKUqV2snag4RLLZZh2uH4cOqse5PH3qIwkfWWH7ah2mYMhmB82TgIU8PZa53r9Dz9fagkHTSdcPS02qQ15R0EZBZj2MPuHpuOeFnWsP6h8RRsB6r3peNiwUFxyQHr786njy/CTyHGLWToNoyGpFXQJq77NIYoJg0x4esuqEfe2kJMZyCln/4FaGpsI5HzaySF7VxQSFwbupBzus13lTGvunzAEcHDosRDBzXfBbbUV8oPLDidUEW2fK2sGerC7FzL4yzHOkrbnlg/Zac3fyNGMN+P050MoniPxPT3l45oyWm2xDE42YuESfP6s5q7X5JsLrArFVW2/ynC+N/FvhLVy0FRRoHLRPgB7mLZNFjnEbaH9rf7ubh50dZdWPxJFBk+hz4wnzBV50D88YnGLhJ/H6PDuQhE+zy1rg5YQxg6UzNJccLSbQRPC4cn0aBUbnzZvMNfG+VEW8+ppPD9/YWELql04l+niMvxoSQBDwBqJZjJUIPoO/bk2i0/ZTGolvVA5T9eontoDVmgFShVcbPmA9zsd4fUYk=
+      file_glob: true
+      file:
+      - "./target/*.obr"
+      - "./target/*.jar"
+      skip_cleanup: true
+      on:
+        tags: true
+        condition: "$TRAVIS_TAG =~ ^release-"
 cache:
   directories:
-    - $HOME/.m2
+  - "$HOME/.m2"
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: hx7+CnHoM27xHI4Wy1Kqv/F5F10KIhgA7WaeyXB20f4Jc5IaCbs7j6wiRoE09mZQpjoHTjiLDtLo4NofRuOw3vdt7KuRGE1ul1EyyxUhJ9NL9GlxBQzdbX4ShdhuCJ6v5S8b2PovfU2xvKUqV2snag4RLLZZh2uH4cOqse5PH3qIwkfWWH7ah2mYMhmB82TgIU8PZa53r9Dz9fagkHTSdcPS02qQ15R0EZBZj2MPuHpuOeFnWsP6h8RRsB6r3peNiwUFxyQHr786njy/CTyHGLWToNoyGpFXQJq77NIYoJg0x4esuqEfe2kJMZyCln/4FaGpsI5HzaySF7VxQSFwbupBzus13lTGvunzAEcHDosRDBzXfBbbUV8oPLDidUEW2fK2sGerC7FzL4yzHOkrbnlg/Zac3fyNGMN+P050MoniPxPT3l45oyWm2xDE42YuESfP6s5q7X5JsLrArFVW2/ynC+N/FvhLVy0FRRoHLRPgB7mLZNFjnEbaH9rf7ubh50dZdWPxJFBk+hz4wnzBV50D88YnGLhJ/H6PDuQhE+zy1rg5YQxg6UzNJccLSbQRPC4cn0aBUbnzZvMNfG+VEW8+ppPD9/YWELql04l+niMvxoSQBDwBqJZjJUIPoO/bk2i0/ZTGolvVA5T9eontoDVmgFShVcbPmA9zsd4fUYk=
+#  file: "./target/*.jar"
+#  on:
+#    repo: ZenUml/Confluence-Plugin-Server
+#    branch: cp-29-travis-release-to-github
