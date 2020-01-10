@@ -7,6 +7,7 @@ import com.atlassian.confluence.pages.AttachmentManager;
 import com.atlassian.confluence.setup.settings.SettingsManager;
 import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
+import com.atlassian.upm.api.license.PluginLicenseManager;
 import com.atlassian.webresource.api.assembler.PageBuilderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,16 +22,19 @@ import java.util.Map;
 public class SequenceMacro implements Macro {
 
     private PageBuilderService pageBuilderService;
+    private final PluginLicenseManager pluginLicenseManager;
     private AttachmentManager attachmentManager;
     private SettingsManager settingsManager;
 
     @Autowired
     public SequenceMacro(
             @ComponentImport PageBuilderService pageBuilderService,
+            @ComponentImport PluginLicenseManager pluginLicenseManager,
             @ComponentImport AttachmentManager attachmentManager,
             @ComponentImport SettingsManager settingsManager
     ) {
         this.pageBuilderService = pageBuilderService;
+        this.pluginLicenseManager = pluginLicenseManager;
         this.attachmentManager = attachmentManager;
         this.settingsManager = settingsManager;
     }
@@ -65,7 +69,8 @@ public class SequenceMacro implements Macro {
                 String tag = getPDFExportImgTag(s, conversionContext);
                 return tag;
             }
-            return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
+            String licenseInfo = pluginLicenseManager.getLicense().isDefined() ? "" : "No license presented";
+            return String.join("", "<sequence-diagram>", s, "</sequence-diagram>", licenseInfo);
         } catch (RuntimeException e){
             return "<div> We are not able to render the macro. Please contact the support at https://zenuml.atlassian.net/servicedesk </div>";
         }

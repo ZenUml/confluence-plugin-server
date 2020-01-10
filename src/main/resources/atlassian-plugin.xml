@@ -40,13 +40,9 @@
         <option key="showValueInPlaceholder" value="true" />
       </parameter>
     </parameters>
-  </xhtml-macro>  
-  <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet"> 
-    <description key="license-servlet.description">The License Servlet Plugin</description>  
-    <url-pattern>/com.zenuml.confluence.sequence/license</url-pattern> 
-  </servlet>
-  <servlet name="License Hello World Servlet" i18n-name-key="license-hello-world-servlet.name" key="license-hello-world-servlet" class="com.zenuml.confluence.servlet.LicenseHelloWorldServlet"> 
-    <description key="license-hello-world-servlet.description">The License Hello World Servlet Plugin</description>  
-    <url-pattern>/com.zenuml.confluence.sequence/licensehelloworld</url-pattern> 
+  </xhtml-macro>
+  <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet">
+    <description key="license-servlet.description">The License Servlet Plugin</description>
+    <url-pattern>/com.zenuml.confluence.sequence/license</url-pattern>
   </servlet>
 </atlassian-plugin>
