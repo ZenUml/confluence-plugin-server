@@ -63,7 +63,7 @@ public class SequenceMacro implements Macro {
 
     public String execute(Map<String, String> map, String s, ConversionContext conversionContext) {
         try {
-            pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence.sequence:active-sequence-resources");
+            pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence-addon:active-sequence-resources");
             String outputType = conversionContext.getOutputType();
             if (outputType.equalsIgnoreCase("pdf")) {
                 String tag = getPDFExportImgTag(s, conversionContext);
