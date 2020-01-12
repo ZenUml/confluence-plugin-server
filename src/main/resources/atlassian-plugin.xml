@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
   <plugin-info> 
     <description>${project.description}</description>  
@@ -43,6 +42,6 @@
   </xhtml-macro>
   <servlet name="License Servlet" i18n-name-key="license-servlet.name" key="license-servlet" class="com.zenuml.confluence.servlet.LicenseServlet">
     <description key="license-servlet.description">The License Servlet Plugin</description>
-    <url-pattern>/com.zenuml.confluence.sequence/license</url-pattern>
+    <url-pattern>/com.zenuml.confluence-addon/license</url-pattern>
   </servlet>
 </atlassian-plugin>
