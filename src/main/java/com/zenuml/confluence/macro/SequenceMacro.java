@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
@@ -37,11 +38,10 @@ public class SequenceMacro implements Macro {
     private String createMD5(String plaintext) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(plaintext.getBytes("UTF-8"));
+            md.update(plaintext.getBytes(StandardCharsets.UTF_8));
             byte[] digest = md.digest();
-            String myHash = DatatypeConverter.printHexBinary(digest).toLowerCase();
-            return  myHash;
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            return DatatypeConverter.printHexBinary(digest).toLowerCase();
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
@@ -61,8 +61,7 @@ public class SequenceMacro implements Macro {
             pageBuilderService.assembler().resources().requireWebResource("com.zenuml.confluence-addon:active-sequence-resources");
             String outputType = conversionContext.getOutputType();
             if (outputType.equalsIgnoreCase("pdf")) {
-                String tag = getPDFExportImgTag(s, conversionContext);
-                return tag;
+                return getPDFExportImgTag(s, conversionContext);
             }
             return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
         } catch (RuntimeException e){
