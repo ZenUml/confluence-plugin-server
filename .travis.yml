@@ -1,10 +1,10 @@
 language: java
 jdk: openjdk8
 before_install:
-- wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_mac_hotspot_8u202b08.tar.gz
+- wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jre_x64_windows_hotspot_8u202b08.zip
 - pwd
 - ls
-- tar -xzf OpenJDK8U-jdk_x64_mac_hotspot_8u202b08.tar.gz
+- zip OpenJDK8U-jdk_x64_mac_hotspot_8u202b08.tar.gz
 - export JAVA_HOME=jdk8u202-b08/Contents/Home
 - java -Xmx32m -version
 - javac -J-Xmx32m -version
