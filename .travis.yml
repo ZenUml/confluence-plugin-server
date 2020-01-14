@@ -4,7 +4,8 @@ before_install:
 - wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/openjdk-8/8u202-b26-2/openjdk-8_8u202-b26.orig.tar.gz
 - pwd
 - ls
-- zip OpenJDK8U-jdk_x64_mac_hotspot_8u202b08.tar.gz
+- tar -xzf openjdk-8_8u202-b26.orig.tar.gz
+- ls
 - export JAVA_HOME=jdk8u202-b08/Contents/Home
 - java -Xmx32m -version
 - javac -J-Xmx32m -version
