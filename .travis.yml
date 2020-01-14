@@ -41,4 +41,4 @@ jobs:
         condition: "$TRAVIS_TAG =~ ^release-"
 cache:
   directories:
-  - "$HOME/.m2"
+    - "$HOME/.m2"
