@@ -4,7 +4,8 @@ before_install:
 - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
 - tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
 - echo $PWD
-- export JAVA_HOME=./jdk8u202-b08/Contents/Home
+- export JAVA_HOME=$PWD/jdk8u202-b08/Contents/Home
+- echo $JAVA_HOME
 - java -Xmx32m -version
 - javac -J-Xmx32m -version
 - sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable
