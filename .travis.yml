@@ -1,18 +1,18 @@
 language: java
 jdk: openjdk8
 before_install:
-- echo $JAVA_HOME
-- wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
-- tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
-- export JAVA_HOME=$PWD/jdk8u202-b08
-- echo $JAVA_HOME
-- sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable
-  contrib" >>/etc/apt/sources.list'
-- wget https://packages.atlassian.com/api/gpg/key/public
-- sudo apt-key add public
-- sudo apt-get update
-- sudo apt-get install atlassian-plugin-sdk
-- atlas-version
+  - echo $JAVA_HOME
+  - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
+  - tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
+  - export JAVA_HOME=$PWD/jdk8u202-b08
+  - echo $JAVA_HOME
+  - sudo sh -c 'echo "deb https://packages.atlassian.com/debian/atlassian-sdk-deb/ stable
+    contrib" >>/etc/apt/sources.list'
+  - wget https://packages.atlassian.com/api/gpg/key/public
+  - sudo apt-key add public
+  - sudo apt-get update
+  - sudo apt-get install atlassian-plugin-sdk
+  - atlas-version
 install: skip
 stages:
 - test
@@ -25,8 +25,8 @@ jobs:
       - atlas-unit-test
   - stage: release
     script:
-    - atlas-package
-    - ls -l ./target
+      - atlas-package
+      - ls -l ./target
     deploy:
       provider: releases
       api_key:
