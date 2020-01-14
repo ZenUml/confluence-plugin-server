@@ -24,7 +24,10 @@ stages:
 jobs:
   include:
   - stage: test
-    script: atlas-unit-test
+    script:
+      - java -Xmx32m -version
+      - javac -J-Xmx32m -version
+      - atlas-unit-test
   - stage: release
     script:
     - atlas-package
