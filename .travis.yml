@@ -25,6 +25,7 @@ jobs:
   include:
   - stage: test
     script:
+      - echo $JAVA_HOME
       - java -Xmx32m -version
       - javac -J-Xmx32m -version
       - atlas-unit-test
