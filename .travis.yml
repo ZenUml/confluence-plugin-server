@@ -15,9 +15,9 @@ before_install:
   - atlas-version
 install: skip
 stages:
-- test
-- name: release
-  if: branch =~ ^release-
+  - test
+  - name: release
+    if: branch =~ ^release-
 jobs:
   include:
   - stage: test
