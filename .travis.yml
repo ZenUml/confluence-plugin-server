@@ -1,6 +1,7 @@
 language: java
 jdk: openjdk8
 before_install:
+- echo $JAVA_HOME
 - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
 - tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
 - echo $PWD
