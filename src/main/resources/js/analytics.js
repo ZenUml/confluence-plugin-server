@@ -1,6 +1,6 @@
 $(function() {  
   //Google TagManager
-  var GTM_ID = '';
+  var GTM_ID = 'GTM-PVFGNPM';
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -18,7 +18,7 @@ $(function() {
   var serverName = AJS.Meta.get("server-name");
   var userFullName = AJS.Meta.get("current-user-fullname");
   AJS.$.ajax({
-    url: baseUrl + '/rest/plugins/1.0/com.zenuml.confluence.sequence-key',
+    url: baseUrl+ '/rest/plugins/1.0/com.zenuml.confluence-addon-key/summary',
     type: 'Get',
     beforeSend: function (request) {
       request.setRequestHeader("X-Atlassian-Token", "nocheck");
@@ -32,8 +32,7 @@ $(function() {
       BrowserVersion: browserVersion,
       ConfluenceVersion: confluenceVersion,
       ZenUMLVersion: res.version,
-      UserLicensed: res.usesLicensing===true ? 'N':'Y',
-      event: "UserStatus"
+      UsesLicensing: res.usesLicensing===true ? 'N':'Y',
     })
   });
 });
