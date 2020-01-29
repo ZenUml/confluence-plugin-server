@@ -10,10 +10,25 @@ $(function() {
   var tgmIframe = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id='+GTM_ID+'"'+
   ' height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
   $(document.body).prepend(tgmIframe)
-
+  //GetBrowserType
+  navigator.sayswho= (function(){
+    var ua= navigator.userAgent, tem, 
+    M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if(/trident/i.test(M[1])){
+        tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+        return 'IE '+(tem[1] || '');
+    }
+    if(M[1]=== 'Chrome'){
+        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+    return M.join(' ');
+  })();
   //DataLayer of GTM
   var baseUrl = AJS.Confluence.getBaseUrl();
-  var browserVersion = window.navigator.userAgent;
+  var browserVersion = navigator.sayswho;
   var confluenceVersion = AJS.Meta.get("version-number");
   var serverName = AJS.Meta.get("server-name");
   var userFullName = AJS.Meta.get("current-user-fullname");
@@ -33,6 +48,7 @@ $(function() {
       ConfluenceVersion: confluenceVersion,
       ZenUMLVersion: res.version,
       UsesLicensing: res.usesLicensing===true ? 'N':'Y',
+      event: "UserStatus"
     })
   });
 });
