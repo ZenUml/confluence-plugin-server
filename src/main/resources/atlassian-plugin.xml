@@ -28,6 +28,7 @@
     <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>  
     <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>  
     <resource type="download" name="images/" location="/images" value="enabled"/>  
+    <resource type="download" name="analytics.js" location="/js/analytics.js" value="enabled"/>  
     <context>macro-browser</context> 
   </web-resource>  
   <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
