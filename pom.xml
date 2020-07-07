@@ -97,6 +97,11 @@
             <version>2.4</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>diagram-as-code.js</artifactId>
+            <version>0.1.10</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -63,7 +63,7 @@ public class SequenceMacro implements Macro {
             if (outputType.equalsIgnoreCase("pdf")) {
                 return getPDFExportImgTag(s, conversionContext);
             }
-            return String.join("", "<sequence-diagram>", s, "</sequence-diagram>");
+            return String.join("", "<diagram-as-code>", s, "</diagram-as-code>");
         } catch (RuntimeException e){
             return "<div> We are not able to render the macro. Please contact the support at https://zenuml.atlassian.net/servicedesk </div>";
         }
