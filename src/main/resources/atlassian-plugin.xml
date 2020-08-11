@@ -28,8 +28,8 @@
     <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
     <resource type="download" name="images/" location="/images" value="enabled"/>
     <resource type="download" name="analytics.js" location="/js/analytics.js" value="enabled"/>
-    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.10/dist/diagram-as-code.min.js" value="enabled"/>
-    <context>macro-browser</context>
+    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.14/dist/diagram-as-code.min.js" value="enabled"/>
+    <context>editor</context>
   </web-resource>
   <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
     <description key="sequence.macro.desc"/>

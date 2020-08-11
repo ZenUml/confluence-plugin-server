@@ -1,4 +1,5 @@
-<section id="zenuml-editor-dialog" class="aui-dialog2 aui-dialog2-big aui-layer" role="dialog" aria-hidden="true">
+<section id="zenuml-editor-dialog" class="aui-dialog2 aui-dialog2-big aui-layer"
+         role="dialog" aria-hidden="true" style="height: calc(100% - 200px)">
     <header class="aui-dialog2-header">
         <h2 class="aui-dialog2-header-main">Edit your diagram</h2>
         <a class="aui-dialog2-header-close">
@@ -6,7 +7,7 @@
         </a>
     </header>
     <div class="aui-dialog2-content">
-        <div id="app"></div>
+        <diagram-as-code contenteditable="true" show-editor="true"></diagram-as-code>
     </div>
     <footer class="aui-dialog2-footer">
         <div class="aui-dialog2-footer-actions">

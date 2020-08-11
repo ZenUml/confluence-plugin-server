@@ -4,3 +4,7 @@
 #Starter {
     display: block !important;
 }
+
+#zenuml-editor-dialog .aui-dialog2-content {
+    padding: 0;
+}
