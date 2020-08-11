@@ -1,6 +1,6 @@
 AJS.bind('init.rte', function () {
   // mount the editor
-  VueModel.$mount('#app');
+  // VueModel.$mount('#app');
   let macroName = 'active-sequence';
   // The dialog is defined in zenuml-editor-dialog.vm
   let dialog = AJS.dialog2("#zenuml-editor-dialog");
@@ -9,11 +9,14 @@ AJS.bind('init.rte', function () {
     // var dsl = VueModel.$store.state.code || 'A.method()';
     newParams["Desc"] = 'Double-click to see preview';
     // newParams["DslHash"] = md5(dsl.replace(/\s/g, ''));
+    var editorSection = document.getElementById('zenuml-editor-dialog')
+    var code = editorSection.getElementsByTagName('diagram-as-code')[0]
+      .vueComponent.$store.state.code;
     var macro = {
       name: macroName,
       params: newParams,
       defaultParameterValue: "",
-      body: VueModel.$store.state.code
+      body: code
     };
     var selection = AJS.Rte.getEditor().selection.getNode();
     tinymce.plugins.Autoconvert.convertMacroToDom(macro, function (data, textStatus, jqXHR) {
@@ -27,10 +30,11 @@ AJS.bind('init.rte', function () {
   // override opener: get old DSL from data-macro-parameters and set it to zenUmlStore
   AJS.MacroBrowser.setMacroJsOverride(macroName, {
     opener: function (macro) {
-      console.log('macro', macro);
-      VueModel.$store.state.code = (macro && macro.body) || 'A.method()';
       // open custom dialog
       dialog.show();
+      var editorSection = document.getElementById('zenuml-editor-dialog')
+      editorSection.getElementsByTagName('diagram-as-code')[0]
+        .vueComponent.$store.dispatch('updateCode', (macro && macro.body) || 'A.method()')
     }
   });
 
@@ -74,7 +78,7 @@ AJS.$(document).ready(function () {
     }
     return objects;
   }
-  // Get all attachments based on page id 
+  // Get all attachments based on page id
   // return a ajax promise
   function getAttachments() {
     return AJS.$.ajax({
@@ -82,7 +86,7 @@ AJS.$(document).ready(function () {
       type: 'GET'
     });
   }
-  // Create and Upload a new attchment 
+  // Create and Upload a new attchment
   // return a ajax promise
   function uploadAttachment(blob, dsl) {
     var hash = md5(dsl);
