@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zenuml</groupId>
     <artifactId>confluence-addon</artifactId>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
     <organization>
         <name>P and D Vision</name>
         <url>https://www.zenuml.com/</url>
