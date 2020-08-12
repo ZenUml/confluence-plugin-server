@@ -21,10 +21,10 @@
     <resource type="download" name="demo.html" location="/demo.html" value="enabled"/>
     <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
     <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>
-    <resource type="download" name="md5.min.js" location="/js/md5.min.js" value="enabled"/>
-    <resource type="download" name="dom-to-image.min.js" location="/js/dom-to-image.min.js" value="enabled"/>
-    <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>
-    <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>
+<!--    <resource type="download" name="md5.min.js" location="/js/md5.min.js" value="enabled"/>-->
+<!--    <resource type="download" name="dom-to-image.min.js" location="/js/dom-to-image.min.js" value="enabled"/>-->
+<!--    <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>-->
+<!--    <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>-->
     <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
     <resource type="download" name="images/" location="/images" value="enabled"/>
     <resource type="download" name="analytics.js" location="/js/analytics.js" value="enabled"/>
