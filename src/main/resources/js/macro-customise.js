@@ -47,9 +47,9 @@ AJS.$(document).ready(function () {
   // return a dom node list
   function getAllShadowElements() {
     var elements = [];
-    AJS.$('sequence-diagram').each(function () {
-      if (this.shadowRoot.querySelector(".sequence-diagram-container")) {
-        elements.push(this.shadowRoot.querySelector(".sequence-diagram-container"))
+    AJS.$('diagram-as-code').each(function () {
+      if (this.shadowRoot.querySelector(".diagram-as-code.noEditor>.split>.sequence-diagram")) {
+        elements.push(this.shadowRoot.querySelector(".sequence-diagram"))
       }
     });
     return elements;
@@ -62,17 +62,14 @@ AJS.$(document).ready(function () {
     if (doms.length > 0) {
       var dslList = [];
       doms.forEach(function (dom) {
-        var dslEls = AJS.$(dom).find('.zenuml-dsl');
-        if (dslEls.length > 0) {
-          var dslText = dslEls.text();
-          // remove duplicate when upload mutiple same uml at the same time
-          if (dslList.indexOf(dslText) < 0) {
-            objects.push({
-              dsl: dslText,
-              domtoimagePromise: domtoimage.toBlob(dom, { bgcolor: 'white' })
-            });
-            dslList.push(dslText);
-          }
+        var dslText = dom.__vue__.$store.state.code;
+        // remove duplicate when upload mutiple same uml at the same time
+        if (dslList.indexOf(dslText) < 0) {
+          objects.push({
+            dsl: dslText,
+            domtoimagePromise: domtoimage.toBlob(dom, { bgcolor: 'white' })
+          });
+          dslList.push(dslText);
         }
       })
     }
