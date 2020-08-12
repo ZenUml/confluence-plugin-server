@@ -25,11 +25,21 @@
 <!--    <resource type="download" name="dom-to-image.min.js" location="/js/dom-to-image.min.js" value="enabled"/>-->
 <!--    <resource type="download" name="zen-sequence-vendor.js" location="/js/zen-sequence-vendor.js" value="enabled"/>-->
 <!--    <resource type="download" name="zen-sequence-app.js" location="/js/zen-sequence-app.js" value="enabled"/>-->
-    <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
+<!--    <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>-->
     <resource type="download" name="images/" location="/images" value="enabled"/>
     <resource type="download" name="analytics.js" location="/js/analytics.js" value="enabled"/>
     <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.14/dist/diagram-as-code.min.js" value="enabled"/>
-    <context>editor</context>
+  </web-resource>
+
+  <web-resource key="active-sequence-resources-editor" name="sequence Web Resources for editor">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <dependency>com.atlassian.auiplugin:dialog2</dependency>
+    <dependency>confluence.editor.actions:editor-macro-browser</dependency>
+    <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
+    <resource type="download" name="vue.js" location="/js/vue.js" value="enabled"/>
+    <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
+    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.14/dist/diagram-as-code.min.js" value="enabled"/>
+    <context>atl.general</context>
   </web-resource>
   <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
     <description key="sequence.macro.desc"/>
