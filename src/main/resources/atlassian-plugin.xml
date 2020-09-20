@@ -21,7 +21,7 @@
     <resource type="download" name="images/" location="/images" value="enabled"/>
     <resource type="download" name="analytics.js" location="/js/analytics.js" value="enabled"/>
     <resource type="download" name="vue" location="/META-INF/resources/webjars/vue/2.6.11/dist/vue.js" value="enabled"/>
-    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.14/dist/diagram-as-code.min.js" value="enabled"/>
+    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.15/dist/diagram-as-code.min.js" value="enabled"/>
   </web-resource>
 
   <web-resource key="active-sequence-resources-editor" name="sequence Web Resources for editor">
@@ -31,7 +31,7 @@
     <resource type="download" name="sequence.css" location="/css/sequence.css" value="enabled"/>
     <resource type="download" name="macro-customise.js" location="/js/macro-customise.js" value="enabled"/>
     <resource type="download" name="vue" location="/META-INF/resources/webjars/vue/2.6.11/dist/vue.js" value="enabled"/>
-    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.14/dist/diagram-as-code.min.js" value="enabled"/>
+    <resource type="download" name="diagram-as-code.js" location="/META-INF/resources/webjars/diagram-as-code.js/0.1.15/dist/diagram-as-code.min.js" value="enabled"/>
     <context>atl.general</context>
   </web-resource>
   <xhtml-macro name="active-sequence" class="com.zenuml.confluence.macro.SequenceMacro" icon="/download/resources/${atlassian.plugin.key}:active-sequence-resources/images/zenuml_logo.png" key="active-sequence-macro">
