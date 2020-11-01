@@ -31,7 +31,7 @@ Run `$ atlas-run` from the root folder
 1. navigate to mange apps->find new apps->search ZenUML->install
 
 # release
-1. create new tag on master branch: `git tag -a tag-name release-*** -m "message"` (name can be changed to fit release process). 
+1. create new tag on master branch: `git tag -a release-*** -m "message"` (name can be changed to fit release process). 
 1. push tag to remote. `git push origin tag-name`
 1. travis ci runs release job for the git tag.
 1. artifacts are released in github releases.
