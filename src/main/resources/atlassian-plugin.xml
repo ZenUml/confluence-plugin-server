@@ -7,6 +7,9 @@
     <param name="plugin-icon">images/zenuml_logo.png</param>
     <param name="plugin-logo">images/zenuml_logo.png</param>
     <param name="atlassian-licensing-enabled">false</param>
+    <param name="atlassian-data-center-status">compatible</param>
+    <param name="atlassian-data-center-compatible">true</param>
+    <param name="plugin-type">both</param>
   </plugin-info>
   <!-- add our i18n resource -->
   <resource type="i18n" name="i18n" location="sequence"/>
