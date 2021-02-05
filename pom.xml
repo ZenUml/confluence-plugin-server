@@ -105,7 +105,7 @@
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>diagram-as-code.js</artifactId>
-            <version>0.1.18</version>
+            <version>${diagram-as-code.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -177,5 +177,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <upm.license.compatibility.version>2.21.4</upm.license.compatibility.version>
+        <diagram-as-code.version>0.1.18</diagram-as-code.version>
     </properties>
 </project>
