@@ -30,3 +30,8 @@ jobs:
       - run: atlas-unit-test
       - run: atlas-package
       - run: ls -l ./target
+      - name: Upload artifacts  # Find artifacts under actions/jobs
+        uses: actions/upload-artifact@v2
+        with:
+          name: confluence-plugin-addon
+          path: ./target/confluence-addon*.jar
