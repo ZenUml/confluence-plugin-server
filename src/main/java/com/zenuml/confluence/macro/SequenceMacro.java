@@ -9,7 +9,7 @@ import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.webresource.api.assembler.PageBuilderService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.apache.commons.text.StringEscapeUtils;
 import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -63,7 +63,8 @@ public class SequenceMacro implements Macro {
             if (outputType.equalsIgnoreCase("pdf")) {
                 return getPDFExportImgTag(s, conversionContext);
             }
-            return String.join("", "<diagram-as-code>", s, "</diagram-as-code>");
+            String escapedHTML = StringEscapeUtils.escapeHtml4(s);
+            return String.join("", "<diagram-as-code>", escapedHTML, "</diagram-as-code>");
         } catch (RuntimeException e){
             return "<div> We are not able to render the macro. Please contact the support at https://zenuml.atlassian.net/servicedesk </div>";
         }

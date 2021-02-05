@@ -105,7 +105,12 @@
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>diagram-as-code.js</artifactId>
-            <version>0.1.15</version>
+            <version>0.1.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
     <build>
