@@ -27,3 +27,6 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install atlassian-plugin-sdk
       - run: atlas-version
+      - run: atlas-unit-test
+      - run: atlas-package
+      - run: ls -l ./target
