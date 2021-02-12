@@ -1,3 +1,4 @@
+//================EDITOR========================
 AJS.bind('init.rte', function () {
   let macroName = 'active-sequence';
   // The dialog is defined in zenuml-editor-dialog.vm
@@ -40,6 +41,7 @@ AJS.bind('init.rte', function () {
 
 });
 
+//================VIEWER========================
 AJS.$(document).ready(function () {
   debugger
   var pageId = AJS.Meta.get("page-id");
