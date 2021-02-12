@@ -1,9 +1,8 @@
 AJS.bind('init.rte', function () {
-  // mount the editor
-  // VueModel.$mount('#app');
   let macroName = 'active-sequence';
   // The dialog is defined in zenuml-editor-dialog.vm
   let dialog = AJS.dialog2("#zenuml-editor-dialog");
+  // When we click the submit button on the editor
   AJS.$("#zenuml-editor-dialog-submit-button").click(function (e) {
     var newParams = {};
     // var dsl = VueModel.$store.state.code || 'A.method()';
@@ -20,6 +19,7 @@ AJS.bind('init.rte', function () {
     };
     var selection = AJS.Rte.getEditor().selection.getNode();
     tinymce.plugins.Autoconvert.convertMacroToDom(macro, function (data, textStatus, jqXHR) {
+      // Is this data from macro.body?
       AJS.$(selection).replaceWith(data);
       dialog.hide();
     }, function (jqXHR, textStatus, errorThrown) {
@@ -34,7 +34,7 @@ AJS.bind('init.rte', function () {
       dialog.show();
       var editorSection = document.getElementById('zenuml-editor-dialog')
       editorSection.getElementsByTagName('diagram-as-code')[0]
-        .vueComponent.$store.dispatch('updateCode', (macro && macro.body) || 'A.method()')
+        .vueComponent.$store.dispatch('updateCode', {code: (macro && macro.body) || 'A.method()'})
     }
   });
 
