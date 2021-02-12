@@ -41,6 +41,7 @@ AJS.bind('init.rte', function () {
 });
 
 AJS.$(document).ready(function () {
+  debugger
   var pageId = AJS.Meta.get("page-id");
   var baseUrl = AJS.Confluence.getBaseUrl();
   // Get all shadow elements from page
@@ -131,6 +132,6 @@ AJS.$(document).ready(function () {
         });
       });
     }
-  });
+  }, 2000);
 
 })
