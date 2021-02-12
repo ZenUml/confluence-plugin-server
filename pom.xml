@@ -178,6 +178,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <upm.license.compatibility.version>2.21.4</upm.license.compatibility.version>
-        <diagram-as-code.version>0.1.28</diagram-as-code.version>
+        <diagram-as-code.version>0.1.29</diagram-as-code.version>
     </properties>
 </project>
