@@ -44,20 +44,18 @@ AJS.bind('init.rte', function () {
 //================VIEWER========================
 // We have to do attachment upload in Viewer but not Editor because users can change the code without going into the Editor.
 AJS.$(document).ready(function () {
-  var pageId = AJS.Meta.get("page-id");
-  var baseUrl = AJS.Confluence.getBaseUrl();
+  const pageId = AJS.Meta.get("page-id");
+  const baseUrl = AJS.Confluence.getBaseUrl();
+  const attachmentEndpoint = baseUrl + '/rest/api/content/' + pageId + '/child/attachment'
+
   // Get all attachments based on page id
   // return a ajax promise
   function getAttachments() {
-    return AJS.$.ajax({
-      url: baseUrl + '/rest/api/content/' + pageId + '/child/attachment?expand=version',
-        type: 'GET'
-    });
+    return AJS.$.ajax({ url: attachmentEndpoint, type: 'GET' });
   }
   // Create and Upload a new attchment
   // return a ajax promise
-  function uploadAttachment(blob, dsl) {
-    var hash = md5(dsl);
+  function uploadAttachment(blob, hash) {
     var file = new File([blob], "zenuml-" + hash, { type: 'image/png' });
     var fd = new FormData();
     fd.append("file", file);
@@ -65,7 +63,7 @@ AJS.$(document).ready(function () {
     fd.append('minorEdit', "true");
 
     return AJS.$.ajax({
-      url: baseUrl + '/rest/api/content/' + pageId + '/child/attachment',
+      url: attachmentEndpoint,
       type: 'POST',
       beforeSend: function (request) {
         request.setRequestHeader("X-Atlassian-Token", "nocheck");
@@ -80,12 +78,14 @@ AJS.$(document).ready(function () {
     AJS.$('diagram-as-code.conf-macro.output-block').each(async function (index, el) {
       const existingAttachments = await getAttachments();
       const dsl = el.shadowRoot.querySelector('.sequence-diagram').__vue__.$store.state.code;
+      const hash = md5(dsl);
+
       el.shadowRoot.querySelector('.sequence-diagram').__vue__.toBlob().then(function (blob) {
         if (!existingAttachments.results.some(function (att) {
-          return att.title === 'zenuml-' +  md5(dsl)
+          return att.title === 'zenuml-' +  hash;
         })) {
-          uploadAttachment(blob, dsl);
-          console.log('Attachment updated.')
+          uploadAttachment(blob, hash);
+          console.log('Attachment updated.', hash)
         }
       })
     });
