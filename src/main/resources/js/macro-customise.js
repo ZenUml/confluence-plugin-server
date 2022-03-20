@@ -80,7 +80,7 @@ AJS.$(document).ready(function () {
       const dsl = el.shadowRoot.querySelector('.sequence-diagram').__vue__.$store.state.code;
       const hash = md5(dsl);
 
-      el.shadowRoot.querySelector('.sequence-diagram').__vue__.toBlob().then(function (blob) {
+      el.shadowRoot.querySelector('.frame').__vue__.toBlob().then(function (blob) {
         if (!existingAttachments.results.some(function (att) {
           return att.title === 'zenuml-' +  hash;
         })) {
